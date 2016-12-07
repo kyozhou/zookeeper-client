@@ -1,5 +1,5 @@
 <?php
-namespace kyoz;
+namespace Kyoz;
 /**
  * PHP Zookeeper Client
  *
