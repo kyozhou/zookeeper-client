@@ -17,6 +17,15 @@ class ZookeeperClient
       */
     private $callback = array();
 
+    private static $zkClient = null;
+
+    static function getInstance($address) {
+        if(self::$zkClient == null) {
+            self::$zkClient = new ZookeeperClient();
+        }
+        return self::$zkClient;
+    }
+
 	/**
 	 * Constructor
 	 *
