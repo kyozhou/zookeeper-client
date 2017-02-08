@@ -21,7 +21,7 @@ class ZookeeperClient
 
     static function getInstance($address) {
         if(self::$zkClient == null) {
-            self::$zkClient = new ZookeeperClient();
+            self::$zkClient = new ZookeeperClient($address);
         }
         return self::$zkClient;
     }
