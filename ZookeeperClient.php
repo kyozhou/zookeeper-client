@@ -87,7 +87,7 @@ class ZookeeperClient
 		if (empty($params)) {
 			$params = array(
 				array(
-					'perms'  => Zookeeper::PERM_ALL,
+					'perms'  => \Zookeeper::PERM_ALL,
 					'scheme' => 'world',
 					'id'     => 'anyone',
 				)
