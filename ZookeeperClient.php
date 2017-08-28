@@ -214,8 +214,35 @@ class ZookeeperClient
 			return null;
 		}
 	}
+
+    //return treed-config or string
+    public function loadNode($path) {
+        $list = @$this->zookeeper->getChildren($path);
+        if(!empty($list)) {
+            $data = [];
+            foreach($list as $key) {
+                $value = $this->zookeeper->get($path . '/' . $key);
+                if(!empty($value)) {
+                    $data[$key] = $value;
+                }else {
+                    $data[$key] = $this->loadNode($path . '/' . $key);
+                }
+                return $data;
+            }
+        }else {
+            $value = @$this->zookeeper->get($path);
+            if(!empty($value)) {
+                return $value;
+            }else {
+                return null;
+            }
+        }
+    }
 }
 
+
+$zk = new ZookeeperClient('dev.mirahome.me:2181');
+$data = $zk->loadNode("/mira2/mysql");
 
 /*$zk = new ZookeeperClient('localhost:2181');
 var_dump($zk->get('/'));
