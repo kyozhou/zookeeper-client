@@ -227,8 +227,8 @@ class ZookeeperClient
                 }else {
                     $data[$key] = $this->loadNode($path . '/' . $key);
                 }
-                return $data;
             }
+            return $data;
         }else {
             $value = @$this->zookeeper->get($path);
             if(!empty($value)) {
@@ -241,8 +241,9 @@ class ZookeeperClient
 }
 
 
-$zk = new ZookeeperClient('dev.mirahome.me:2181');
-$data = $zk->loadNode("/mira2/mysql");
+//$zk = new ZookeeperClient('dev.mirahome.me:2181');
+//$data = $zk->loadNode("/mira2/mysql");
+//print_r($data);
 
 /*$zk = new ZookeeperClient('localhost:2181');
 var_dump($zk->get('/'));
