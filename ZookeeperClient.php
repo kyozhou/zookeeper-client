@@ -231,11 +231,7 @@ class ZookeeperClient
             return $data;
         }else {
             $value = @$this->zookeeper->get($path);
-            if(!empty($value)) {
-                return $value;
-            }else {
-                return null;
-            }
+            return $value;
         }
     }
 }
